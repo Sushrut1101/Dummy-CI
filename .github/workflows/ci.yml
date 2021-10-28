@@ -1,0 +1,4 @@
+name: Prepare Dummy Stuff
+
+env:
+  DUMP_URL: # Enter the git URL of your Dump
