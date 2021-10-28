@@ -20,3 +20,11 @@ env:
   REBASE_KERNEL_TO_CAF: false
   MK_SYSTEM_VENDOR_PROP: true
   
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkouts
+         uses: actions/checkout@v2
+
