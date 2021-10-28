@@ -33,3 +33,10 @@ jobs:
               echo "Cloning the Dumps to ~/dump ..."
               git clone --depth=1 $DUMP_URL ~/dump || { echo "Failed to Clone Dump" && exit 1; }
               echo "Dump Cloned Successfully!"
+
+       - name: Clone android_tools
+         run: |
+              echo "Cloning android_tools to ~/android"
+              git clone https://github.com/ShivamKumarJha/android_tools.git ~/android || { echo "ERROR: Failed to Clone android_tools" && exit 1; }
+              echo "android_tools Successfullt Cloned!"              
+              
