@@ -1,5 +1,15 @@
 name: Prepare Dummy Stuff
 
+on:
+  push:
+    paths-ignore:
+      - '*.md'
+    branches: [ master ]
+
+defaults:
+  run:
+    shell: bash
+
 env:
   DUMP_URL: # Enter the git URL of your Dump
   
