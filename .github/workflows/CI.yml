@@ -27,4 +27,9 @@ jobs:
     steps:
        - name: Checkouts
          uses: actions/checkout@v2
-
+   
+       - name: Clone Dumps
+         run: |
+              echo "Cloning the Dumps to ~/dump ..."
+              git clone --depth=1 $DUMP_URL ~/dump || { echo "Failed to Clone Dump" && exit 1; }
+              echo "Dump Cloned Successfully!"
