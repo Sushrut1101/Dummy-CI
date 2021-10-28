@@ -27,6 +27,11 @@ jobs:
     steps:
        - name: Checkouts
          uses: actions/checkout@v2
+         
+       - name: Configuring Git...
+         run: |
+              git config --global user.name "Sushrut1101"
+              git config --global user.email "guptasushrut@gmail.com"
    
        - name: Clone Dumps
          run: |
