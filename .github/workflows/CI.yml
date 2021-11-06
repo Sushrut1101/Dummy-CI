@@ -35,8 +35,8 @@ jobs:
       
        - name: Storing git Secrets...
          run: |
-              echo "${{ secrets.GIT_TOKEN }}" > .github_token
-              echo "${{ secrets.GIT_ORG_NAME }}" > .github_orgname
+              echo "${{ secrets.GIT_TOKEN }}" > ~/.github_token
+              echo "${{ secrets.GIT_ORG_NAME }}" > ~/.github_orgname
    
        - name: Clone Dumps
          run: |
@@ -49,4 +49,21 @@ jobs:
               echo "Cloning android_tools to ~/android"
               git clone https://github.com/ShivamKumarJha/android_tools.git ~/android || { echo "ERROR: Failed to Clone android_tools" && exit 1; }
               echo "android_tools Successfullt Cloned!"              
+
+       - name: Running "Device Tree Generator"...
+         if: ${{ GEN_DT == true }}
+         run: |
+              echo "Generating Dummy DT..."
+              cd ~/android
+              ./tools/dummy_dt.sh ~/dump
+              echo "Done!"
+              echo "Pushing the Trees..."
+              export BRAND=$(ls dummy_dt/)
+              export DEVICE=$(ls dummp_dt/$BRAND/)
+              cd dummp_dt/$BRAND/$DEVICE
+              export TOKEN=$(cat ~/.github_token)
+              export ORG=$(cat ~/.github_orgname)
+              git remote remove origin
+              git remote add origin https://github.com/$ORG/dummy_device_$BRAND_$DEVICE
+              git push -u
               
