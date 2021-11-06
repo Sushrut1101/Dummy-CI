@@ -11,7 +11,7 @@ defaults:
     shell: bash
 
 env:
-  DUMP_URL: # Enter the git URL of your Dump
+  DUMP_URL: https://github.com/Redmi-G25-Dev/alps_k62v1_64_bsp_dump.git
   
   # Set it to true if you want to do that:
   DOWNLOAD_BLOBS: false
