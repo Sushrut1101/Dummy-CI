@@ -51,7 +51,6 @@ jobs:
               echo "android_tools Successfullt Cloned!"              
 
        - name: Running "Device Tree Generator"...
-         if: ${{ GEN_DT == true }}
          run: |
               echo "Generating Dummy DT..."
               cd ~/android
@@ -68,7 +67,6 @@ jobs:
               git push -u
 
        - name: Running "Vendor Tree Generator"...
-         if: ${{ GEN_VT == true }}
          run: |
               echo "Generating the Vendor Tree..."
               cd ~/android
