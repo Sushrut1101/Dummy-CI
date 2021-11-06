@@ -83,4 +83,4 @@ jobs:
               export ORG=$(cat ~/.github_orgname)
               git remote add origin https://github.com/$ORG/vendor_$BRAND_$DEVICE
               git push -u
-              
+              echo "Pushed!"
