@@ -52,35 +52,18 @@ jobs:
 
        - name: Running "Device Tree Generator"...
          run: |
-              echo "Generating Dummy DT..."
+              echo "Generating the Dummy DT..."
               cd ~/android
+              export GIT_TOKEN=$(cat ~/.github_token)
+              export ORG=$(cat ~/.github_orgname)
               ./tools/dummy_dt.sh ~/dump
               echo "Done!"
-              echo "Pushing the Trees..."
-              export BRAND=$(ls dummy_dt/)
-              export DEVICE=$(ls dummp_dt/$BRAND/)
-              cd dummp_dt/$BRAND/$DEVICE
-              export TOKEN=$(cat ~/.github_token)
-              export ORG=$(cat ~/.github_orgname)
-              git remote remove origin
-              git remote add origin https://github.com/$ORG/dummy_device_$BRAND_$DEVICE
-              git push -u
 
        - name: Running "Vendor Tree Generator"...
          run: |
               echo "Generating the Vendor Tree..."
               cd ~/android
-              ./tools/vendor_tree.sh ~/dump
-              echo "Done!"
-              echo "Pushing the Trees..."
-              export BRAND=$(ls vendor/)
-              export DEVICE=$(ls vendor/$BRAND/)
-              cd vendor/$BRAND/$DEVICE
-              git init
-              git add *
-              git commit --author="Sushrut1101 <guptasushrut@gmail.com>" -s -m '"$DEVICE": Initial Commit'
-              export TOKEN=$(cat ~/.github_token)
+              export GIT_TOKEN=$(cat ~/.github_token)
               export ORG=$(cat ~/.github_orgname)
-              git remote add origin https://github.com/$ORG/vendor_$BRAND_$DEVICE
-              git push -u
-              echo "Pushed!"
+              ./tools/dummy_dt.sh ~/dump
+              echo "Done!"
