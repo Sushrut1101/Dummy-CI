@@ -54,8 +54,8 @@ jobs:
          run: |
               echo "Generating the Dummy DT..."
               cd ~/android
-              export GIT_TOKEN=$(cat ~/.github_token)
-              export ORG=$(cat ~/.github_orgname)
+              export GIT_TOKEN="${{ secrets.GIT_TOKEN }}"
+              export ORG="${{ secrets.GIT_ORG_NAME }}"
               ./tools/dummy_dt.sh ~/dump
               echo "Done!"
 
@@ -63,7 +63,7 @@ jobs:
          run: |
               echo "Generating the Vendor Tree..."
               cd ~/android
-              export GIT_TOKEN=$(cat ~/.github_token)
-              export ORG=$(cat ~/.github_orgname)
-              ./tools/dummy_dt.sh ~/dump
+              export GIT_TOKEN="${{ secrets.GIT_TOKEN }}"
+              export ORG="${{ secrets.GIT_ORG_NAME }}"
+              ./tools/vendor_tree.sh ~/dump
               echo "Done!"
